@@ -28,5 +28,8 @@ Run the development server:
 npm run dev
 ```
 
+## Promo Film
+Open `promo/index.html` in a browser for a 39-second launch film. It is plain HTML, CSS and JavaScript; every sound is synthesized with the Web Audio API, so there are no media files.
+
 ## License
 MIT
