@@ -31,5 +31,7 @@ npm run dev
 ## Promo Film
 Open `promo/index.html` in a browser for a 39-second launch film. It is plain HTML, CSS and JavaScript; every sound is synthesized with the Web Audio API, so there are no media files.
 
+`promo/instagram-post.png` is a matching 1080 × 1350 Instagram post; its source is `promo/instagram-post.html`.
+
 ## License
 MIT

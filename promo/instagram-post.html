@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>readme-generator Post</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --black: #000;
+    --white: #fff;
+    --fg: #eef1f8;
+    --mute: #7d869c;
+    --blue: #4c7dff;
+    --f-sans: "Geist", ui-sans-serif, system-ui, Helvetica, Arial, sans-serif;
+    --f-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  html, body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; background: #000; }
+  body {
+    position: relative;
+    font-family: var(--f-sans);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  /* ---------- the brand image: one crop, dissolving up into black ----------
+     arch exits left, loop exits right, lowest point of the valley on y = 1270;
+     the top stays fully transparent for 80 px so the first glow sits ~95 px under the URL baseline */
+  .wave {
+    position: absolute;
+    left: -420px;
+    top: 306px;
+    width: 1800px;
+    height: auto;
+    display: block;
+    -webkit-mask-image: linear-gradient(180deg,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 80px, rgba(0,0,0,.06) 128px, rgba(0,0,0,.22) 176px,
+      rgba(0,0,0,.5) 224px, rgba(0,0,0,.8) 272px, #000 320px,
+      #000 calc(100% - 56px), rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(180deg,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 80px, rgba(0,0,0,.06) 128px, rgba(0,0,0,.22) 176px,
+      rgba(0,0,0,.5) 224px, rgba(0,0,0,.8) 272px, #000 320px,
+      #000 calc(100% - 56px), rgba(0,0,0,0) 100%);
+  }
+
+  /* re-tint the dissolving rims toward the brand blue (the raw fade reads teal) */
+  .tint {
+    position: absolute; left: 0; top: 306px; width: 1080px; height: 336px;
+    background: linear-gradient(180deg, #4c7dff 0px, #4c7dff 176px, rgba(76,125,255,0) 336px);
+    mix-blend-mode: color;
+    pointer-events: none;
+  }
+
+  /* remove the occluded second tube that peeks in at the right edge */
+  .hush { position: absolute; left: 0; top: 0; pointer-events: none; }
+
+  /* single film registration mark, top-right corner of the 80 px frame */
+  .reg { position: absolute; left: 0; top: 0; pointer-events: none; }
+
+  /* ---------- type block: x = 80, 8 px rhythm, ascender line on y = 80 ---------- */
+  .type { position: absolute; left: 80px; top: 71px; }
+
+  .word {
+    margin: 0 0 0 -4px;       /* optical: cancel the 'r' side bearing so the stem sits on x = 80 */
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 72px;
+    letter-spacing: -.045em;
+    color: var(--white);
+    white-space: nowrap;
+  }
+  .word .hy { color: var(--blue); }
+
+  .tag {
+    margin: 24px 0 0 -2px;    /* optical: 'D' stem on x = 80 */
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    letter-spacing: -.03em;
+    color: var(--mute);
+    white-space: nowrap;
+  }
+  .tag span { display: block; }
+  .tag .k { color: var(--white); }
+
+  .url {
+    margin: 40px 0 0;
+    font: 500 24px/24px var(--f-mono);
+    letter-spacing: .025em;   /* right edge lands on the tagline's second line */
+    color: var(--mute);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <img class="wave" src="../public/shape.png" alt="">
+  <div class="tint"></div>
+  <svg class="hush" width="1080" height="1350" viewBox="0 0 1080 1350" aria-hidden="true">
+    <defs><filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2"/></filter></defs>
+    <polygon points="1008,360 1100,360 1100,596 1080,565 1056,530 1036,506 1029,498 1023,489 1019,464 1014,436 1008,400" fill="#000" filter="url(#soft)"/>
+  </svg>
+  <svg class="reg" width="1080" height="1350" viewBox="0 0 1080 1350" aria-hidden="true">
+    <path d="M992 80h16M1000 72v16" stroke="rgba(205,215,245,.6)" stroke-width="1.5" fill="none"/>
+  </svg>
+
+  <div class="type">
+    <h1 class="word">readme<span class="hy">-</span>generator</h1>
+    <p class="tag"><span>Dynamic, beautiful and</span><span class="k">real-time GitHub statistics.</span></p>
+    <p class="url">xrs-readme-generator.vercel.app</p>
+  </div>
+</body>
+</html>
